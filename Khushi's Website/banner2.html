@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Items</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #6b7280;
+      margin-left: 6px;
+      font-size: 0.875rem;
+    }
+    .star-rating {
+      color: #f59e0b;
+    }
+    .product-card {
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card .select-options {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 10;
+      border: none;
+    }
+    .product-card:hover .select-options {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen">
+  <!-- Navigation Bar -->
+  <header class="border-b">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="font-['Montserrat, sans-serif;'] text-2xl"><b><a href="index.html">LIFE STYLE</a></b></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1">
+              <i class="ri-customer-service-line text-xl"></i>
+              <span>24/7 HELP</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </div>
+          <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1 cursor-pointer">
+            <i class="ri-user-line text-xl"></i>
+            <span>YOUR ACCOUNT</span>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <i class="ri-heart-line text-xl"></i>
+            <span>WISHLIST</span>
+          </div>
+          <div class="relative cursor-pointer">
+            <i class="ri-shopping-bag-line text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="#" class="hover:text-primary">SHOP</a></li>
+          <li><a href="#" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="#" class="hover:text-primary">MEN</a></li>
+          <li><a href="#" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="#" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">COZY WARM JACKETS</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="all-items-container">
+      <!-- All products will be dynamically added here -->
+    </div>
+  </main>
+
+  <script>
+    // Array of all products
+    const products = [
+      {
+        name: "Black Regular Fit Women Stylish and Cozy Winter Cape",
+        image: "./images/Black Regular Fit Women Stylish and Cozy Winter Cape.jpeg",
+        price: "₹1,499",
+        originalPrice: "₹2,499",
+        reviews: "3 reviews",
+        rating: 4
+      },
+      {
+        name: "Women's Lightweight Puffer Jacket Stylish Winter Wear Warm and Comfortable - Mustard",
+        image: "./images/Women's Lightweight Puffer Jacket Stylish Winter Wear Warm and Comfortable - Mustard.jpeg",
+        price: "₹2,499",
+        originalPrice: "₹3,499",
+        reviews: "2 reviews",
+        rating: 4
+      },
+      {
+        name: "Navy Blue Regular Fit Jacket",
+        image: "./images/Navy Blue Regular Fit Jacket.jpeg",
+        price: "₹1,999",
+        originalPrice: "₹2,999",
+        reviews: "1 review",
+        rating: 5
+      },
+      {
+        name: "Women's Winter Lightweight Cozy and Winter Resistant Puffer Jacket - Black",
+        image: "./images/Women's Winter Lightweight Cozy and Winter Resistant Puffer Jacket - Black.jpeg",
+        price: "₹1,499",
+        originalPrice: "₹1,999",
+        reviews: "1 review",
+        rating: 5
+      },
+      {
+        name: "Women's Classic Sleek Warm and Perfect for Winter Puffer Jacket - Mustard",
+        image: "./images/Women's Classic Sleek Warm and Perfect for Winter Puffer Jacket - Mustard.jpeg",
+        price: "₹1,299",
+        originalPrice: "₹1,999",
+        reviews: "1 review",
+        rating: 5
+      },
+      {
+        name: "Jack and Jones Black Regular Fit Puffer",
+        image: "./images/Jack and Jones Black Regular Fit Puffer.jpeg",
+        price: "₹2,999",
+        originalPrice: "₹3,999",
+        reviews: "4 reviews",
+        rating: 5
+      },
+      {
+        name: "Women's Stylish Solid Winter Wear Warm Jacket",
+        image: "./images/Women's Stylish Solid Winter Wear Warm Jacket.jpeg",
+        price: "₹1,499",
+        originalPrice: "₹1,999",
+        reviews: "3 reviews",
+        rating: 4
+      },
+      {
+        name: "Black Regular Fit Jacket (2)",
+        image: "./images/Black Regular Fit Jacket (2).jpeg",
+        price: "₹999",
+        originalPrice: "₹1,499",
+        reviews: "7 reviews",
+        rating: 5
+      },
+      {
+        name: "Black Regular Fit Jacket",
+        image: "./images/Black Regular Fit Jacket.jpeg",
+        price: "₹999",
+        originalPrice: "₹1,499",
+        reviews: "6 reviews",
+        rating: 4
+      },
+      {
+        name: "Buttoned Duffle Coat",
+        image: "./images/Buttoned Duffle Coat.jpeg",
+        price: "₹1,299",
+        originalPrice: "₹1,799",
+        reviews: "5 reviews",
+        rating: 4
+      },
+      {
+        name: "Buttoned Duffle Coat2",
+        image: "./images/Buttoned Duffle Coat2.jpeg",
+        price: "₹3,999",
+        originalPrice: "₹5,499",
+        reviews: "8 reviews",
+        rating: 5
+      },
+      {
+        name: "Buttoned Faux Leather Jacket",
+        image: "./images/Buttoned Faux Leather Jacket.webp",
+        price: "₹1,999",
+        originalPrice: "₹2,999",
+        reviews: "4 reviews",
+        rating: 4
+      },
+      {
+        name: "Puffer Coat",
+        image: "./images/Puffer Coat.webp", 
+        price: "₹1,799",
+        originalPrice: "₹2,499",
+        reviews: "3 reviews",
+        rating: 4
+      },
+      {
+        name: "Biege Buttoned Duffle Coat",
+        image: "./images/Biege Buttoned Duffle Coat.webp",
+        price: "₹1,799",
+        originalPrice: "₹2,499",
+        reviews: "10 reviews",
+        rating: 5
+      },
+      {
+        name: "Simplicity Faux Fur Coat",
+        image: "./images/Simplicity Faux Fur Coat.webp",
+        price: "₹1,799",
+        originalPrice: "₹2,499",
+        reviews: "2 reviews",
+        rating: 4
+      }
+    ];
+
+    // Function to dynamically create product cards
+    const allItemsContainer = document.getElementById("all-items-container");
+    products.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.className = "product-card flex-none w-full";
+      productCard.innerHTML = `
+        <div class="relative rounded overflow-hidden">
+          <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover object-top">
+          <div class="sale-badge">SALE!</div>
+          <div class="select-options">SELECT OPTIONS</div>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">${product.name}</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              ${'<i class="ri-star-fill"></i>'.repeat(product.rating)}
+              ${'<i class="ri-star-line"></i>'.repeat(5 - product.rating)}
+            </div>
+            <span class="text-xs text-gray-500 ml-2">${product.reviews}</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">${product.price}</span>
+            <span class="original-price">${product.originalPrice}</span>
+          </div>
+        </div>
+      `;
+      allItemsContainer.appendChild(productCard);
+    });
+  </script>
+</body>
+</html>

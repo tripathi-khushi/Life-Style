@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WISHLIST - LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .product-card {
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #6b7280;
+      margin-left: 6px;
+      font-size: 0.875rem;
+    }
+    .star-rating {
+      color: #f59e0b;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen">
+  <!-- Header -->
+  <header class="border-b">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="text-2xl font-bold"><a href="index.html">LIFE STYLE</a></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="flex items-center gap-1">
+              <i class="ri-customer-service-line text-xl"></i>
+              <span>24/7 HELP</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <i class="ri-user-line text-xl"></i>
+            <span>YOUR ACCOUNT</span>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <i class="ri-heart-line text-xl"></i>
+            <span>WISHLIST</span>
+          </div>
+          <div class="relative cursor-pointer">
+            <i class="ri-shopping-bag-line text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="#" class="hover:text-primary">SHOP</a></li>
+          <li><a href="#" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="#" class="hover:text-primary">MEN</a></li>
+          <li><a href="#" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="#" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl font-bold">YOUR WISHLIST</h2>
+      <div class="flex items-center gap-4">
+        <button class="px-4 py-2 border border-gray-300 hover:bg-gray-100">Share Wishlist</button>
+        <button class="px-4 py-2 bg-black text-white hover:bg-gray-800">Add All to Cart</button>
+      </div>
+    </div>
+
+    <!-- Wishlist Items -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Wishlist Item 1 -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+        <div class="relative">
+          <img src="./images/Premium Slim-Fit Blazer.jpg" alt="Premium Slim-Fit Blazer" class="w-full h-80 object-cover">
+          <div class="sale-badge">SALE!</div>
+          <button class="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100">
+            <i class="ri-heart-fill text-red-500"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-medium">Premium Slim-Fit Blazer</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">12 reviews</span>
+          </div>
+          <div class="mt-2">
+            <span class="text-lg font-medium">₹2,999</span>
+            <span class="original-price">₹3,999</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <button class="flex-1 py-2 border border-gray-300 hover:bg-gray-100">Add to Cart</button>
+            <button class="p-2 border border-gray-300 hover:bg-gray-100">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishlist Item 2 -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+        <div class="relative">
+          <img src="./images/Designer Denim Jeans.jpg" alt="Designer Denim Jeans" class="w-full h-80 object-cover">
+          <div class="sale-badge">SALE!</div>
+          <button class="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100">
+            <i class="ri-heart-fill text-red-500"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-medium">Designer Denim Jeans</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">8 reviews</span>
+          </div>
+          <div class="mt-2">
+            <span class="text-lg font-medium">₹1,999</span>
+            <span class="original-price">₹2,999</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <button class="flex-1 py-2 border border-gray-300 hover:bg-gray-100">Add to Cart</button>
+            <button class="p-2 border border-gray-300 hover:bg-gray-100">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishlist Item 3 -->
+      <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm">
+        <div class="relative">
+          <img src="./images/Black Summer Dress.jpg" alt="Black Summer Dress" class="w-full h-80 object-cover">
+          <div class="sale-badge">SALE!</div>
+          <button class="absolute top-2 left-2 p-2 bg-white rounded-full hover:bg-gray-100">
+            <i class="ri-heart-fill text-red-500"></i>
+          </button>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-medium">Black Summer Dress</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">15 reviews</span>
+          </div>
+          <div class="mt-2">
+            <span class="text-lg font-medium">₹1,799</span>
+            <span class="original-price">₹2,499</span>
+          </div>
+          <div class="mt-4 flex gap-2">
+            <button class="flex-1 py-2 border border-gray-300 hover:bg-gray-100">Add to Cart</button>
+            <button class="p-2 border border-gray-300 hover:bg-gray-100">
+              <i class="ri-delete-bin-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Wishlist Message (Hidden by default) -->
+    <div class="hidden text-center py-12">
+      <i class="ri-heart-line text-6xl text-gray-300 mb-4"></i>
+      <h3 class="text-xl font-medium mb-2">Your Wishlist is Empty</h3>
+      <p class="text-gray-600 mb-6">Looks like you haven't added any items to your wishlist yet.</p>
+      <a href="index.html" class="inline-block bg-black text-white px-8 py-3 hover:bg-gray-800">Continue Shopping</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 py-12">
+    <div class="container mx-auto px-4 max-w-screen-xl">
+      <!-- Top Section: Features -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="flex items-center space-x-4">
+          <i class="ri-truck-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">FAST & FREE DELIVERY</h3>
+            <p class="text-sm text-gray-600">On all orders over 999</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-store-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">RETURNS AND EXCHANGES</h3>
+            <p class="text-sm text-gray-600">15 days to return your product</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-shield-check-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">SECURE PAYMENT</h3>
+            <p class="text-sm text-gray-600">100% secure payments</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-customer-service-2-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">24/7 SUPPORT</h3>
+            <p class="text-sm text-gray-600">Dedicated support in 24h</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br>
+
+      <!-- Middle Section: Newsletter -->
+      <div class="text-center mb-12">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">SIGN UP TO OUR NEWSLETTER</h3>
+        <p class="text-sm text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+        <form class="flex justify-center items-center max-w-md mx-auto">
+          <input type="email" placeholder="Enter your email address" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+          <button type="submit" class="bg-black text-white px-4 py-2 hover:bg-gray-800">
+            <i class="ri-mail-send-line"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Bottom Section: Links and Contact -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-600">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">LIFE STYLE</h3>
+          <p>Line Baazar, <br>Allahabad, U.P </p>
+          <p class="mt-2">(+91) 6306407861<br>info@liestyle.com</p>
+        </div>
+
+        <!-- Shop Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">SHOP</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">Women</a></li>
+            <li><a href="#" class="hover:underline">Men</a></li>
+            <li><a href="#" class="hover:underline">Kids</a></li>
+            <li><a href="#" class="hover:underline">Sale</a></li>
+          </ul>
+        </div>
+
+        <!-- About Us Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">ABOUT US</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">About</a></li>
+            <li><a href="#" class="hover:underline">Press</a></li>
+            <li><a href="#" class="hover:underline">Stores</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">CUSTOMER SERVICE</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">Track Order</a></li>
+            <li><a href="#" class="hover:underline">Return & Cancellations</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+            <li><a href="#" class="hover:underline">Manage Account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="flex flex-col md:flex-row justify-between items-center mt-12 text-sm text-gray-600">
+        <p>© 2025 LifeStyle. All rights reserved.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html> 

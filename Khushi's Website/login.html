@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Signup - LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .auth-form {
+      transition: all 0.5s ease;
+    }
+    .auth-form:hover {
+      transform: translateY(-2px);
+    }
+    .form-container {
+      transition: all 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .form-container.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .slide-up {
+      animation: slideUp 0.5s ease forwards;
+    }
+    .slide-down {
+      animation: slideDown 0.5s ease forwards;
+    }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginContainer = document.getElementById('loginContainer');
+      const signupContainer = document.getElementById('signupContainer');
+      const createAccountBtn = document.getElementById('createAccountBtn');
+      const backToLoginBtn = document.getElementById('backToLoginBtn');
+
+      // Initially hide signup form
+      signupContainer.classList.add('hidden');
+
+      // Show signup form
+      createAccountBtn.addEventListener('click', function() {
+        loginContainer.classList.add('slide-down');
+        setTimeout(() => {
+          loginContainer.classList.add('hidden');
+          loginContainer.classList.remove('slide-down');
+          signupContainer.classList.remove('hidden');
+          signupContainer.classList.add('slide-up');
+        }, 500);
+      });
+
+      // Show login form
+      backToLoginBtn.addEventListener('click', function() {
+        signupContainer.classList.add('slide-down');
+        setTimeout(() => {
+          signupContainer.classList.add('hidden');
+          signupContainer.classList.remove('slide-down');
+          loginContainer.classList.remove('hidden');
+          loginContainer.classList.add('slide-up');
+        }, 500);
+      });
+
+      // Handle sign in form submission
+      const signInForm = document.getElementById('signInForm');
+      signInForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('signInEmail').value;
+        const password = document.getElementById('signInPassword').value;
+        
+        if (email && password) {
+          localStorage.setItem('isAuthenticated', 'true');
+          window.location.href = 'account.html';
+        } else {
+          alert('Please fill in all fields');
+        }
+      });
+
+      // Handle sign up form submission
+      const signUpForm = document.getElementById('signUpForm');
+      signUpForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+        const name = document.getElementById('signUpName').value;
+        
+        if (email && password && name) {
+          localStorage.setItem('isAuthenticated', 'true');
+          window.location.href = 'account.html';
+        } else {
+          alert('Please fill in all fields');
+        }
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <header class="border-b bg-white">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="text-2xl font-bold"><a href="index.html">LIFE STYLE</a></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="flex items-center gap-1">
+              <a href="help.html" class="flex items-center gap-1">
+                <i class="ri-customer-service-line text-xl"></i>
+                <span>24/7 HELP</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <a href="account.html" class="flex items-center gap-1">
+              <i class="ri-user-line text-xl"></i>
+              <span>YOUR ACCOUNT</span>
+            </a>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <a href="wishlist.html" class="flex items-center gap-1">
+              <i class="ri-heart-line text-xl"></i>
+              <span>WISHLIST</span>
+            </a>
+          </div>
+          <div class="relative cursor-pointer">
+            <i class="ri-shopping-bag-line text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="#" class="hover:text-primary">SHOP</a></li>
+          <li><a href="#" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="#" class="hover:text-primary">MEN</a></li>
+          <li><a href="#" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="#" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12">
+    <div class="max-w-md mx-auto">
+      <!-- Login Form -->
+      <div id="loginContainer" class="form-container">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold mb-2">Welcome Back</h1>
+          <p class="text-gray-600">Sign in to your account</p>
+        </div>
+
+        <div class="auth-form bg-white p-8 rounded-lg shadow-sm">
+          <form id="signInForm" class="space-y-4">
+            <div>
+              <label class="block text-gray-700 mb-2">Email Address</label>
+              <input type="email" id="signInEmail" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Enter your email">
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2">Password</label>
+              <input type="password" id="signInPassword" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Enter your password">
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input type="checkbox" class="mr-2">
+                <span class="text-sm text-gray-600">Remember me</span>
+              </div>
+              <a href="#" class="text-sm text-primary hover:underline">Forgot Password?</a>
+            </div>
+            <button type="submit" class="w-full bg-black text-white py-3 rounded hover:bg-gray-800">Sign In</button>
+            <div class="text-center mt-4">
+              <p class="text-gray-600">Don't have an account?</p>
+              <button type="button" id="createAccountBtn" class="text-primary hover:underline mt-1">Create New Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div id="signupContainer" class="form-container">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold mb-2">Create Account</h1>
+          <p class="text-gray-600">Join our community today</p>
+        </div>
+
+        <div class="auth-form bg-white p-8 rounded-lg shadow-sm">
+          <form id="signUpForm" class="space-y-4">
+            <div>
+              <label class="block text-gray-700 mb-2">Full Name</label>
+              <input type="text" id="signUpName" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Enter your full name">
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2">Email Address</label>
+              <input type="email" id="signUpEmail" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Enter your email">
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2">Password</label>
+              <input type="password" id="signUpPassword" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Create a password">
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2">Confirm Password</label>
+              <input type="password" class="w-full px-4 py-2 border rounded focus:outline-none focus:border-primary" placeholder="Confirm your password">
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              <span class="text-sm text-gray-600">I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a></span>
+            </div>
+            <button type="submit" class="w-full bg-black text-white py-3 rounded hover:bg-gray-800">Create Account</button>
+            <div class="text-center mt-4">
+              <p class="text-gray-600">Already have an account?</p>
+              <button type="button" id="backToLoginBtn" class="text-primary hover:underline mt-1">Back to Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 py-12">
+    <div class="container mx-auto px-4 max-w-screen-xl">
+      <!-- Top Section: Features -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="flex items-center space-x-4">
+          <i class="ri-truck-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">FAST & FREE DELIVERY</h3>
+            <p class="text-sm text-gray-600">On all orders over 999</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-store-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">RETURNS AND EXCHANGES</h3>
+            <p class="text-sm text-gray-600">15 days to return your product</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-shield-check-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">SECURE PAYMENT</h3>
+            <p class="text-sm text-gray-600">100% secure payments</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="ri-customer-service-2-line text-3xl text-gray-700"></i>
+          <div>
+            <h3 class="font-semibold text-gray-900">24/7 SUPPORT</h3>
+            <p class="text-sm text-gray-600">Dedicated support in 24h</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br>
+
+      <!-- Middle Section: Newsletter -->
+      <div class="text-center mb-12">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">SIGN UP TO OUR NEWSLETTER</h3>
+        <p class="text-sm text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+        <form class="flex justify-center items-center max-w-md mx-auto">
+          <input type="email" placeholder="Enter your email address" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+          <button type="submit" class="bg-black text-white px-4 py-2 hover:bg-gray-800">
+            <i class="ri-mail-send-line"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Bottom Section: Links and Contact -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-600">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">LIFE STYLE</h3>
+          <p>Line Baazar, <br>Allahabad, U.P </p>
+          <p class="mt-2">(+91) 6306407861<br>info@liestyle.com</p>
+        </div>
+
+        <!-- Shop Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">SHOP</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">Women</a></li>
+            <li><a href="#" class="hover:underline">Men</a></li>
+            <li><a href="#" class="hover:underline">Kids</a></li>
+            <li><a href="#" class="hover:underline">Sale</a></li>
+          </ul>
+        </div>
+
+        <!-- About Us Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">ABOUT US</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">About</a></li>
+            <li><a href="#" class="hover:underline">Press</a></li>
+            <li><a href="#" class="hover:underline">Stores</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service Links -->
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">CUSTOMER SERVICE</h3>
+          <ul>
+            <li><a href="#" class="hover:underline">Track Order</a></li>
+            <li><a href="#" class="hover:underline">Return & Cancellations</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+            <li><a href="#" class="hover:underline">Manage Account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="flex flex-col md:flex-row justify-between items-center mt-12 text-sm text-gray-600">
+        <p>© 2025 LifeStyle. All rights reserved.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

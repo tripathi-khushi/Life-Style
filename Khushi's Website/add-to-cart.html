@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .cart-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .cart-item {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .cart-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quantity-btn {
+      background: #f3f4f6;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .quantity-btn:hover {
+      background: #e5e7eb;
+    }
+    .remove-btn {
+      color: #ef4444;
+      transition: color 0.3s ease;
+    }
+    .remove-btn:hover {
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="border-b bg-white">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="text-2xl font-bold"><a href="index.html">LIFE STYLE</a></h1>
+        <div class="flex items-center gap-6">
+          <a href="index.html" class="text-gray-600 hover:text-black">
+            <i class="ri-arrow-left-line text-xl"></i>
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cart-container">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Cart Items Section -->
+      <div class="flex-grow">
+        <h2 class="text-3xl font-bold mb-8">Shopping Cart</h2>
+        <div id="cartItems">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Order Summary Section -->
+      <div class="lg:w-1/3">
+        <div class="bg-white p-6  shadow-sm sticky top-4">
+          <h3 class="text-xl font-bold mb-4">Order Summary</h3>
+          <div class="space-y-3 mb-6">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Subtotal</span>
+              <span id="subtotal" class="font-semibold">₹0</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Shipping</span>
+              <span class="font-semibold">Free</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Tax</span>
+              <span id="tax" class="font-semibold">₹0</span>
+            </div>
+            <hr>
+            <div class="flex justify-between text-lg font-bold">
+              <span>Total</span>
+              <span id="total">₹0</span>
+            </div>
+          </div>
+          <button onclick="checkout()" class="w-full bg-black text-white py-3  hover:bg-gray-800 transition-colors">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Sample cart data
+    let cart = [
+      {
+        id: 1,
+        name: "Classic Denim Jacket",
+        price: 2999,
+        image: "./images/sample-product.jpg",
+        quantity: 1
+      },
+      {
+        id: 2,
+        name: "Premium Cotton T-Shirt",
+        price: 999,
+        image: "./images/sample-product.jpg",
+        quantity: 1
+      }
+    ];
+
+    // Initialize cart from localStorage or use sample data
+    function initializeCart() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+      }
+      renderCart();
+      updateOrderSummary();
+    }
+
+    // Render cart items
+    function renderCart() {
+      const cartContainer = document.getElementById('cartItems');
+      cartContainer.innerHTML = cart.map(item => `
+        <div class="cart-item flex items-center gap-6">
+          <img src="${item.image}" alt="${item.name}" class="w-24 h-24 object-cover">
+          <div class="flex-grow">
+            <h3 class="text-lg font-semibold">${item.name}</h3>
+            <p class="text-gray-600">₹${item.price}</p>
+            <div class="flex items-center gap-6 mt-2">
+              <div class="quantity-control">
+                <button onclick="updateQuantity(${item.id}, -1)" class="quantity-btn">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="updateQuantity(${item.id}, 1)" class="quantity-btn">+</button>
+              </div>
+              <button onclick="removeItem(${item.id})" class="remove-btn flex items-center gap-1">
+                <i class="ri-delete-bin-line"></i>
+                Remove
+              </button>
+            </div>
+          </div>
+          <div class="text-lg font-semibold">
+            ₹${item.price * item.quantity}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Update quantity
+    function updateQuantity(itemId, change) {
+      const item = cart.find(i => i.id === itemId);
+      if (item) {
+        item.quantity = Math.max(1, item.quantity + change);
+        saveCart();
+        renderCart();
+        updateOrderSummary();
+      }
+    }
+
+    // Remove item
+    function removeItem(itemId) {
+      cart = cart.filter(item => item.id !== itemId);
+      saveCart();
+      renderCart();
+      updateOrderSummary();
+    }
+
+    // Update order summary
+    function updateOrderSummary() {
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const tax = subtotal * 0.18; // 18% tax
+      const total = subtotal + tax;
+
+      document.getElementById('subtotal').textContent = `₹${subtotal}`;
+      document.getElementById('tax').textContent = `₹${tax.toFixed(2)}`;
+      document.getElementById('total').textContent = `₹${total.toFixed(2)}`;
+    }
+
+    // Save cart to localStorage
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Checkout function
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      // Save order details
+      const order = {
+        items: cart,
+        total: parseFloat(document.getElementById('total').textContent.replace('₹', '')),
+        date: new Date().toISOString()
+      };
+      localStorage.setItem('lastOrder', JSON.stringify(order));
+      
+      // Clear cart
+      cart = [];
+      saveCart();
+      
+      // Show success message
+      alert('Order placed successfully!');
+      window.location.href = 'index.html';
+    }
+
+    // Initialize cart when page loads
+    initializeCart();
+  </script>
+</body>
+</html> 
