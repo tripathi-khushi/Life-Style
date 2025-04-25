@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Collection - LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #6b7280;
+      margin-left: 6px;
+      font-size: 0.875rem;
+    }
+    .star-rating {
+      color: #f59e0b;
+    }
+    .product-card {
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card .select-options {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 10;
+      border: none;
+    }
+    .product-card:hover .select-options {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen">
+  <!-- Navigation Bar -->
+  <header class="border-b">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="font-['Montserrat, sans-serif;'] text-2xl"><b><a href="index.html">LIFE STYLE</a></b></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1">
+              <i class="ri-customer-service-line text-xl"></i>
+              <span>24/7 HELP</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </div>
+          <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1 cursor-pointer">
+            <i class="ri-user-line text-xl"></i>
+            <span>YOUR ACCOUNT</span>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <i class="ri-heart-line text-xl"></i>
+            <span>WISHLIST</span>
+          </div>
+          <div class="relative cursor-pointer">
+            <i class="ri-shopping-bag-line text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="all-items.html" class="hover:text-primary">SHOP</a></li>
+          <li><a href="#" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="men.html" class="hover:text-primary">MEN</a></li>
+          <li><a href="#" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="#" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">MEN'S COLLECTION</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="men-items-container">
+      <!-- All men's products will be dynamically added here -->
+    </div>
+  </main>
+
+  <script>
+    // Array of men's products
+    const mensProducts = [
+      {
+        name: "Premium Slim-Fit Blazer in Black",
+        image: "./images/Premium Slim-Fit Blazer.jpg",
+        price: "₹3,499",
+        originalPrice: "₹4,999",
+        reviews: "4 reviews",
+        rating: 5,
+        link: "Premium_Slim-Fit_Blazer.html"
+      },
+      {
+        name: "Classic Slim Jeans in Dark Blue",
+        image: "./images/Classic Slim Jeans in Dark Blue.jpg",
+        price: "₹1,999",
+        originalPrice: "₹2,999",
+        reviews: "3 reviews",
+        rating: 4,
+        link: "Classic_Slim_Jeans_in_Dark_Blue.html"
+      },
+      {
+        name: "Oxford Cotton Shirt in White",
+        image: "./images/Oxford Cotton Shirt in White.jpg",
+        price: "₹1,299",
+        originalPrice: "₹1,799",
+        reviews: "7 reviews",
+        rating: 5,
+        link: "Oxford Cotton_Shirt_in_White.html"
+      },
+      {
+        name: "Merino Wool Sweater in Navy",
+        image: "./images/Merino Wool Sweater in Navy.jpg",
+        price: "₹2,499",
+        originalPrice: "₹3,499",
+        reviews: "2 reviews",
+        rating: 4,
+        link: "Merino Wool_Sweater_in_Navy.html"
+      },
+      {
+        name: "Slim-Fit Chino Trousers in Beige",
+        image: "./images/Slim-Fit Chino Trousers in Beige.jpg",
+        price: "₹2,499",
+        originalPrice: "₹3,499",
+        reviews: "5 reviews",
+        rating: 4,
+        link: "Slim_Fit_Chino_Trousers_in_Beige.html"
+      },
+      {
+        name: "Premium Leather Jacket in Brown",
+        image: "./images/Premium Leather Jacket in Brown.jpg",
+        price: "₹5,999",
+        originalPrice: "₹7,499",
+        reviews: "8 reviews",
+        rating: 5,
+        link: "Premium Leather_Jacket_in_Brown.html"
+      },
+      {
+        name: "Casual Hoodie in Heather Grey",
+        image: "./images/Casual Hoodie in Heather Grey.jpg",
+        price: "₹1,999",
+        originalPrice: "₹2,499",
+        reviews: "6 reviews",
+        rating: 4,
+        link: "Casual Hoodie_in_Heather_Grey.html"
+      },
+      {
+        name: "Men's Winter Jacket",
+        image: "./images/Men's Winter Jacket.jpg",
+        price: "₹3,499",
+        originalPrice: "₹4,999",
+        reviews: "15 reviews",
+        rating: 5,
+        link: "Men's_Winter_Jacket.html"
+      },
+      {
+        name: "Men's Casual Sneakers",
+        image: "./images/Men's Casual Sneakers.jpg",
+        price: "₹2,499",
+        originalPrice: "₹3,499",
+        reviews: "12 reviews",
+        rating: 4,
+        link: "Men's_Casual_Sneakers.html"
+      },
+      {
+        name: "Denim Jacket in Light Blue",
+        image: "./images/denim-jacket-light-blue.png",
+        price: "₹1,799",
+        originalPrice: "₹2,499",
+        reviews: "3 reviews",
+        rating: 4,
+        link: "Denim_Jacket_in_Light_Blue.html"
+      },
+      {
+        name: "Formal Dress Shirt in White",
+        image: "./images/Men Classic Slim Fit Spread Collar Vertical Striped Cotton.jpg",
+        price: "₹1,499",
+        originalPrice: "₹1,999",
+        reviews: "9 reviews",
+        rating: 5,
+        link: "Formal_Dress_Shirt_in_White.html"
+      },
+      {
+        name: "Wool Blend Overcoat in Charcoal",
+        image: "./images/Double Breasted Overcoat With Belt.jpg",
+        price: "₹4,999",
+        originalPrice: "₹6,499",
+        reviews: "7 reviews",
+        rating: 5,
+        link: "Wool_Blend_Overcoat_in_Charcoal.html"
+      },
+      // Newly added products
+      {
+        name: "Aviator Sunglasses in Black",
+        image: "./images/Aviator Sunglasses With UV Protected Lens.jpg",
+        price: "₹1,299",
+        originalPrice: "₹1,999",
+        reviews: "8 reviews",
+        rating: 5,
+        link: "Aviator_Sunglasses_Black.html"
+      },
+      {
+        name: "Leather Messenger Bag",
+        image: "./images/Unisex Leather Solid Messenger Bag.jpg",
+        price: "₹3,999",
+        originalPrice: "₹4,999",
+        reviews: "12 reviews",
+        rating: 5,
+        link: "Leather_Messenger_Bag.html"
+      },
+      {
+        name: "Wool Blend Scarf in Grey",
+        image: "./images/Self Design Scarves.jpg",
+        price: "₹899",
+        originalPrice: "₹1,299",
+        reviews: "5 reviews",
+        rating: 4,
+        link: "Wool_Blend_Scarf_Grey.html"
+      },
+      {
+        name: "Leather Belt in Brown",
+        image: "./images/Men Brown Leather Belt.jpg",
+        price: "₹1,199",
+        originalPrice: "₹1,599",
+        reviews: "7 reviews",
+        rating: 5,
+        link: "Leather_Belt_Brown.html"
+      },
+      {
+        name: "Cotton Polo T-Shirt in Navy",
+        image: "./images/The Lifestyle Co. Pure Cotton Oversized Polo T-shirt.jpg",
+        price: "₹1,099",
+        originalPrice: "₹1,499",
+        reviews: "9 reviews",
+        rating: 4,
+        link: "Cotton_Polo_Tshirt_Navy.html"
+      },
+      {
+        name: "Leather Wallet in Black",
+        image: "./images/Men Black Genuine Leather Wallet.jpg",
+        price: "₹1,499",
+        originalPrice: "₹1,999",
+        reviews: "11 reviews",
+        rating: 5,
+        link: "Leather_Wallet_Black.html"
+      },
+      {
+        name: "Wool Beanie in Charcoal",
+        image: "./images/Unisex Charcoal Grey Woolen Beanie.jpg",
+        price: "₹699",
+        originalPrice: "₹999",
+        reviews: "4 reviews",
+        rating: 4,
+        link: "Wool_Beanie_Charcoal.html"
+      },
+      {
+        name: "Leather Gloves in Brown",
+        image: "./images/Men Leather Winter Gloves.jpg",
+        price: "₹1,799",
+        originalPrice: "₹2,299",
+        reviews: "6 reviews",
+        rating: 5,
+        link: "Leather_Gloves_Brown.html"
+      },
+      
+     
+     
+      
+      
+    ];
+
+    // Function to dynamically create product cards
+    const menItemsContainer = document.getElementById("men-items-container");
+    mensProducts.forEach(product => {
+      const productCard = document.createElement("div");
+      productCard.className = "product-card flex-none w-full";
+      productCard.innerHTML = `
+        <a href="${product.link}">
+          <div class="relative rounded overflow-hidden">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </div>
+          <div class="mt-3">
+            <h3 class="text-sm font-medium text-gray-900">${product.name}</h3>
+            <div class="flex items-center mt-1">
+              <div class="star-rating flex">
+                ${'<i class="ri-star-fill"></i>'.repeat(product.rating)}
+                ${'<i class="ri-star-line"></i>'.repeat(5 - product.rating)}
+              </div>
+              <span class="text-xs text-gray-500 ml-2">${product.reviews}</span>
+            </div>
+            <div class="mt-1">
+              <span class="text-sm font-medium text-gray-900">${product.price}</span>
+              <span class="original-price">${product.originalPrice}</span>
+            </div>
+          </div>
+        </a>
+      `;
+      menItemsContainer.appendChild(productCard);
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Collection - LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: Montserrat, sans-serif;
+    }
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #6b7280;
+      margin-left: 6px;
+      font-size: 0.875rem;
+    }
+    .star-rating {
+      color: #f59e0b;
+    }
+    .product-card {
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card .select-options {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 10;
+      border: none;
+    }
+    .product-card:hover .select-options {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen">
+  <!-- Navigation Bar -->
+  <header class="border-b">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="font-['Montserrat, sans-serif;'] text-2xl"><b><a href="index.html">LIFE STYLE</a></b></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1">
+              <i class="ri-customer-service-line text-xl"></i>
+              <span>24/7 HELP</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </div>
+          <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1 cursor-pointer">
+            <i class="ri-user-line text-xl"></i>
+            <span>YOUR ACCOUNT</span>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <i class="ri-heart-line text-xl"></i>
+            <span>WISHLIST</span>
+          </div>
+          <div class="relative cursor-pointer">
+            <i class="ri-shopping-bag-line text-xl"></i>
+            <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="all-items.html" class="hover:text-primary">SHOP</a></li>
+          <li><a href="women.html" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="men.html" class="hover:text-primary">MEN</a></li>
+          <li><a href="kids.html" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="#" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">KIDS COLLECTION</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Kids Cozy Hoodie -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Cozy_Hoodie.html">
+            <img src="./images/Kids Cozy Hoodie.jpg" alt="Kids Cozy Hoodie" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Cozy Hoodie</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(5 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,299</span>
+            <span class="original-price">₹1,799</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Running Shoes -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Running_Shoes.html">
+            <img src="./images/Kids Running Shoes.jpg" alt="Kids Running Shoes" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Running Shoes</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(6 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,499</span>
+            <span class="original-price">₹1,999</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Denim Jacket -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Denim_Jacket.html">
+            <img src="./images/Boys Spread Collar Solid Cotton Casual Denim Jacket.jpg" alt="Kids Denim Jacket" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Denim Jacket</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(8 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,799</span>
+            <span class="original-price">₹2,499</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Cotton T-Shirt -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Cotton_T_Shirt.html">
+            <img src="./images/Girls Tom Jerry Printed Cotton Tshirt.jpg" alt="Kids Cotton T-Shirt" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Cotton T-Shirt</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(4 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹599</span>
+            <span class="original-price">₹899</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Wool Sweater -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Wool_Sweater.html">
+            <img src="./images/Girls Woollen Fuzzy Detail Ribbed Crop Cardigan.jpg" alt="Kids Wool Sweater" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Wool Sweater</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(7 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,499</span>
+            <span class="original-price">₹1,999</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Casual Pants -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Casual_Pants.html">
+            <img src="./images/Girls Mid-Rise Wide Legs Track Pants.jpg" alt="Kids Casual Pants" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Casual Pants</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(3 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹899</span>
+            <span class="original-price">₹1,299</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Winter Jacket -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Winter_Jacket.html">
+            <img src="./images/Boys Black White Outdoor Quilted Cotton Jacket.jpg" alt="Kids Winter Jacket" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Winter Jacket</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(9 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹2,499</span>
+            <span class="original-price">₹3,299</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Printed T-Shirt -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Printed_T_Shirt.html">
+            <img src="./images/Girls Printed Extended Sleeves T-shirt.jpg" alt="Kids Printed T-Shirt" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Printed T-Shirt</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(6 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹699</span>
+            <span class="original-price">₹999</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Track Pants -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Track_Pants.html">
+            <img src="./images/Girls Flared Mid-Rise Track pant.jpg" alt="Kids Track Pants" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Track Pants</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(4 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹799</span>
+            <span class="original-price">₹1,099</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Formal Shirt -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Formal_Shirt.html">
+            <img src="./images/Boys Comfort Spread Collar Solid Cotton Formal Shirt.jpg" alt="Kids Formal Shirt" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Formal Shirt</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(7 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,199</span>
+            <span class="original-price">₹1,599</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Sweatshirt -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Sweatshirt.html">
+            <img src="./images/Boys Printed Sweatshirt.jpg" alt="Kids Sweatshirt" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Sweatshirt</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(5 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,099</span>
+            <span class="original-price">₹1,499</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Raincoat -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Raincoat.html">
+            <img src="./images/Oliver Kids Waterproof Hooded Rain Jacket.jpg" alt="Kids Raincoat" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Raincoat</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(8 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,499</span>
+            <span class="original-price">₹1,999</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Cargo Pants -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Cargo_Pants.html">
+            <img src="./images/Girls Cargos Trousers.jpg" alt="Kids Cargo Pants" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Cargo Pants</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(6 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,199</span>
+            <span class="original-price">₹1,599</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Fleece Jacket -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Fleece_Jacket.html">
+            <img src="./images/Girls Leather Water Resistant Puffer Jacket.jpg" alt="Kids Fleece Jacket" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Fleece Jacket</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(10 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹1,799</span>
+            <span class="original-price">₹2,299</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Graphic T-Shirt -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Graphic_T_Shirt.html">
+            <img src="./images/Boys Naruto Graphic Printed Round Neck Oversized T-shirt.jpg" alt="Kids Graphic T-Shirt" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Graphic T-Shirt</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(7 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹799</span>
+            <span class="original-price">₹1,099</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kids Jogger Pants -->
+      <div class="product-card">
+        <div class="relative rounded overflow-hidden">
+          <a href="Kids_Jogger_Pants.html">
+            <img src="./images/Girls Mid Rise Fleece Jogger.jpg" alt="Kids Jogger Pants" class="w-full h-64 object-cover object-top">
+            <div class="sale-badge">SALE!</div>
+            <div class="select-options">SELECT OPTIONS</div>
+          </a>
+        </div>
+        <div class="mt-3">
+          <h3 class="text-sm font-medium text-gray-900">Kids Jogger Pants</h3>
+          <div class="flex items-center mt-1">
+            <div class="star-rating flex">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-line"></i>
+            </div>
+            <span class="text-xs text-gray-500 ml-2">(5 reviews)</span>
+          </div>
+          <div class="mt-1">
+            <span class="text-sm font-medium text-gray-900">₹899</span>
+            <span class="original-price">₹1,199</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html> 

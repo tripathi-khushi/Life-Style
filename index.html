@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFE STYLE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <style>
+    :where([class^="ri-"])::before { content: "\f3c2"; }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .banner-slide {
+      opacity: 0;
+      transition: opacity 0.5s;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px; 
+    }
+    .banner-slide.active {
+      opacity: 1;
+    }
+    .banner-container {
+      gap: 4px; 
+    }
+
+    *{
+      font-family: Montserrat, sans-serif;
+    }
+    .sale-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      }
+      .original-price {
+      text-decoration: line-through;
+      color: #6b7280;
+      margin-left: 6px;
+      font-size: 0.875rem;
+      }
+      .star-rating {
+      color: #f59e0b;
+      }
+      .product-card {
+      transition: transform 0.3s ease;
+      position: relative;
+      }
+      .product-card:hover {
+      transform: translateY(-5px);
+      }
+      .product-card .select-options {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: auto;
+      z-index: 10;
+      border: none;
+      cursor: pointer;
+      }
+      .product-card:hover .select-options {
+      opacity: 1;
+      }
+      .add-to-cart-btn {
+      background-color: black;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      }
+      .add-to-cart-btn:hover {
+      background-color: #333;
+      }
+      .carousel-container {
+      scroll-behavior: smooth;
+      }
+      .gender-button {
+      position: relative;
+      cursor: pointer;
+      }
+      .gender-button.active:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a56db',
+            secondary: '#10b981'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+<body class="bg-white min-h-screen">
+  <header class="border-b">
+    <div class="container mx-auto px-4">
+      <div class="h-16 flex items-center justify-between">
+        <h1 class="font-['Montserrat, sans-serif;'] text-2xl"><b><a href="index.html">LIFE STYLE</a></b></h1>
+        <div class="flex-1 max-w-xl mx-8">
+          <div class="relative">
+            <input type="text" placeholder="Search here..." class="w-full h-10 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:border-primary">
+            <i class="ri-search-line absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="relative group cursor-pointer">
+            <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1">
+              <a href="help.html" class="flex items-center gap-1">
+                <i class="ri-customer-service-line text-xl"></i>
+                <span>24/7 HELP</span>
+                <i class="ri-arrow-down-s-line"></i>
+              </a>
+            </div>
+          </div>
+          <div class="font-['Montserrat, sans-serif;'] flex items-center gap-1 cursor-pointer">
+            <a href="account.php" class="flex items-center gap-1">
+              <i class="ri-user-line text-xl"></i>
+              <span>YOUR ACCOUNT</span>
+            </a>
+          </div>
+          <div class="flex items-center gap-1 cursor-pointer">
+            <a href="wishlist.html" class="flex items-center gap-1">
+              <i class="ri-heart-line text-xl"></i>
+              <span>WISHLIST</span>
+            </a>
+          </div>
+          <div class="relative cursor-pointer">
+            <a href="add-to-cart.html">
+              <i class="ri-shopping-bag-line text-xl"></i>
+              <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <nav class="h-10 flex items-center justify-center">
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-primary">HOME</a></li>
+          <li><a href="all-items.html" class="hover:text-primary">SHOP</a></li>
+          <li><a href="women.html" class="hover:text-primary">WOMEN</a></li>
+          <li><a href="men.html" class="hover:text-primary">MEN</a></li>
+          <li><a href="kids.html" class="hover:text-primary">KIDS</a></li>
+          <li><a href="#sale" class="hover:text-primary">SALE</a></li>
+          <li><a href="aboutus.html" class="hover:text-primary">ABOUT US</a></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+  <!-- Header section ends here -->
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex gap-4 banner-container"> 
+      <div class="w-1/2 relative h-[600px] bg-[#F5F7FA] rounded-lg overflow-hidden">
+        <a href="banner1.html">
+        <div class="banner-slides relative h-full">
+          <div class="banner-slide active">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/carosal1.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent pl-20 pr-12 py-12 flex flex-col justify-center">
+              <h2 class="text-4xl font-bold mb-4">BUY NOW, WEAR FOREVER</h2>
+              <p class="text-xl mb-8">Jeans & Denim up to 65% off</p>
+              <button class="bg-black text-white px-8 py-3 w-fit shop-now-button hover:bg-white hover:text-black transition-colors">SHOP NOW</button>
+            </div>
+          </div>
+          <div class="banner-slide">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/carosal2.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent pl-20 pr-12 py-12 flex flex-col justify-center">
+              <h2 class="text-4xl font-bold mb-4">ELEGANCE REDEFINED</h2>
+              <p class="text-xl mb-8">Luxury Collection up to 40% off</p>
+              <button class="bg-black text-white px-8 py-3 w-fit shop-now-button hover:bg-white hover:text-black transition-colors">SHOP NOW</button>
+            </div>
+          </div>
+          <div class="banner-slide">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/carosal3.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent pl-20 pr-12 py-12 flex flex-col justify-center">
+              <h2 class="text-4xl font-bold mb-4">SUMMER ESSENTIALS</h2>
+              <p class="text-xl mb-8">New Collection 2025</p>
+              <button class="bg-black text-white px-8 py-3 w-fit shop-now-button hover:bg-white hover:text-black transition-colors">SHOP NOW</button>
+            </div>
+          </div>
+        </div>
+      </a>
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white" onclick="prevSlide()">
+          <i class="ri-arrow-left-s-line text-2xl"></i>
+        </button>
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white" onclick="nextSlide()">
+          <i class="ri-arrow-right-s-line text-2xl"></i>
+        </button>
+      </div>
+      <div class="w-1/2 flex flex-col gap-4">
+        <div class="h-[290px] bg-[#F0FAF5] rounded-lg overflow-hidden relative">
+          <a href="banner2.html" class="block h-full w-full">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/cozy-warm-jackets.jpg')"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent p-8 flex flex-col justify-center">
+              <h2 class="text-3xl font-bold mb-2">COZY, WARM JACKETS</h2>
+              <p class="text-lg mb-6">Men's & Women's jackets up to 50% off</p>
+              <button class="bg-black text-white px-8 py-3 w-fit hover:bg-gray-800 shop-now-button">SHOP NOW</button>
+            </div>
+          </a>
+        </div>
+        <div class="h-[290px] bg-[#F0FAF5] rounded-lg overflow-hidden relative">
+          <a href="Sunglasses.html">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/sunglasses.jpg')"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent p-8 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-2">UP TO 30% OFF</h2>
+            <p class="text-lg mb-6">For all sunglasses</p>
+            <button class="bg-black text-white px-8 py-3 w-fit hover:bg-gray-800 shop-now-button">SHOP NOW</button>
+          </div>
+        </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-screen-xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Subscribe and Save -->
+        <div class="flex items-center space-x-4 px-6 py-4">
+          <div class="w-12 h-12 flex items-center justify-center">
+            <i class="ri-price-tag-3-line text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold">SUBSCRIBE AND SAVE</h3>
+            <p class="text-sm text-gray-600">
+              Unlock extra savings on regular orders
+            </p>
+          </div>
+        </div>
+  
+        <!-- Unbeatable Selection -->
+        <div class="flex items-center space-x-4 px-6 py-4">
+          <div class="w-12 h-12 flex items-center justify-center">
+            <i class="ri-shield-check-line text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold">UNBEATABLE SELECTION</h3>
+            <p class="text-sm text-gray-600">
+              Over 1000+ premium brands and styles
+            </p>
+          </div>
+        </div>
+  
+        <!-- Easy Way to Pay -->
+        <div class="flex items-center space-x-4 px-6 py-4">
+          <div class="w-12 h-12 flex items-center justify-center">
+            <i class="ri-secure-payment-line text-2xl"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold">EASY WAY TO PAY</h3>
+            <p class="text-sm text-gray-600">
+              Flexible payment options available
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flash Sale section starts here -->
+  <div class="container mx-auto px-4 py-8 max-w-7xl" id="sale">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900">FLASH DEALS</h2>
+      <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-6">
+          <span class="gender-button active px-2 py-1 font-medium text-gray-900" data-gender="women">WOMEN</span>
+          <span class="gender-button px-2 py-1 font-medium text-gray-900" data-gender="men">MEN</span>
+        </div>
+        <a href="all-items.html" class="text-sm font-medium text-gray-900 hover:underline">VIEW ALL</a>
+      </div>
+    </div>
+    <div class="relative">
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="prev-btn">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <i class="ri-arrow-left-s-line ri-lg"></i>
+        </div>
+      </button>
+  <div class="overflow-hidden relative">
+  <div id="carousel-container" class="carousel-container flex space-x-4 overflow-x-hidden">
+  <!-- Women's Products (Initially Visible) -->
+  <div class="women-products flex space-x-4">
+  <!-- Product 1 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+  <a href="Frame_Detail_Cut_Out_Cami_Skirt_in_Black.html"><img src="./images/Frame Detail Cut-Out Cami Skirt in Black.jpg" alt="Frame Detail Cut-Out Cami Skirt in Black" class="w-full h-64 object-cover object-top"></a>
+  <div class="sale-badge">SALE!</div>
+  <div class="select-options"><a href="Frame_Detail_Cut_Out_Cami_Skirt_in_Black.html">SELECT OPTIONS</a></div>
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Frame Detail Cut-Out Cami Skirt in Black</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">3 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,499</span>
+  <span class="original-price">₹2,499</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 2 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+  <a href="Oversized_Pea_Blazer_in_Black.html">
+    <img src="./images/Oversized Pea Blazer in Black.jpg" alt="Oversized Pea Blazer in Black" class="w-full h-64 object-cover object-top">
+  </a>
+  <div class="sale-badge">SALE!</div>
+  <div class="select-options">
+    <a href="Oversized_Pea_Blazer_in_Black.html">SELECT OPTIONS</a>
+  </div>
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Oversized Pea Blazer in Black</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">2 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹2,499</span>
+  <span class="original-price">₹3,499</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 3 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Julia_Jean_In_Contrast_Wash.html"><img src="./images/Julia Jean In Contrast Wash.jpg" alt="Julia Jean In Contrast Wash" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Julia Jean In Contrast Wash</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">1 review</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,499</span>
+  <span class="original-price">₹1,999</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 4 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Polo_Neck_Gathered_Dress_In_Midnight.html"><img src="./images/Polo Neck Gathered Dress In Midnight.jpg" alt="Polo Neck Gathered Dress In Midnight" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Polo Neck Gathered Dress In Midnight</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">1 review</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,999</span>
+  <span class="original-price">₹2,999</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 5 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Bianca_Jean_In_Light_Blue_Denim.html"><img src="./images/Bianca Jean In Light Blue Denim.jpg" alt="Bianca Jean In Light Blue Denim" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Bianca Jean In Light Blue Denim</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">1 review</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,299</span>
+  <span class="original-price">₹1,799</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 6 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Alina_Jean_In_Indigrey_Wash.html"><img src="./images/Alina Jean In Indigrey Wash.jpg" alt="Alina Jean In Indigrey Wash" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Alina Jean In Indigrey Wash</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">1 review</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,699</span>
+  <span class="original-price">₹2,199</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 7 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Frame_Detail_Dress_in_Natural-Navy.html"><img src="./images/Frame Detail Jumper Dress in Natural-Navy.jpg" alt="Frame Detail Jumper dress in Natural-Navy" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Frame Detail Jumper Dress in Natural-Navy</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">1 review</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹2,299</span>
+  <span class="original-price">₹2,999</span>
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Men's Products -->
+  <div class="men-products flex space-x-4 hidden">
+  <!-- Product 1 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Premium_Slim-Fit_Blazer.html"><img src="./images/Premium Slim-Fit Blazer.jpg" alt="Premium Slim-Fit Blazer in Black" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Premium Slim-Fit Blazer in Black</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">4 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹3,499</span>
+  <span class="original-price">₹4,999</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 2 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Classic_Slim_Jeans_in_Dark_Blue.html"> <img src="./images/Classic Slim Jeans in Dark Blue.jpg" alt="Classic Slim Jeans in Dark Blue" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+ 
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Classic Slim Jeans in Dark Blue</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">3 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,999</span>
+  <span class="original-price">₹2,999</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 3 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Oxford Cotton_Shirt_in_White.html"><img src="./images/Oxford Cotton Shirt in White.jpg" alt="Oxford Cotton Shirt in White" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Oxford Cotton Shirt in White</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">7 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,299</span>
+  <span class="original-price">₹1,799</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 4 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Merino Wool_Sweater_in_Navy.html"><img src="./images/Merino Wool Sweater in Navy.jpg" alt="Merino Wool Sweater in Navy" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Merino Wool Sweater in Navy</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">2 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹2,499</span>
+  <span class="original-price">₹3,499</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 5 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Slim_Fit_Chino_Trousers_in_Beige.html"><img src="./images/Slim-Fit Chino Trousers in Beige.jpg" alt="Slim-Fit Chino Trousers in Beige" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Slim-Fit Chino Trousers in Beige</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">5 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹2,499</span>
+  <span class="original-price">₹3,499</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 6 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Premium Leather_Jacket_in_Brown.html"><img src="./images/Premium Leather Jacket in Brown.jpg" alt="Premium Leather Jacket in Brown" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Premium Leather Jacket in Brown</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">8 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹5,999</span>
+  <span class="original-price">₹7,499</span>
+  </div>
+  </div>
+  </div>
+  <!-- Product 7 -->
+  <div class="product-card flex-none w-64">
+  <div class="relative rounded overflow-hidden">
+    <a href="Casual Hoodie_in_Heather_Grey.html"><img src="./images/Casual Hoodie in Heather Grey.jpg" alt="Casual Hoodie in Heather Grey" class="w-full h-64 object-cover object-top">
+      <div class="sale-badge">SALE!</div>
+      <div class="select-options">SELECT OPTIONS</div></a>
+  
+  </div>
+  <div class="mt-3">
+  <h3 class="text-sm font-medium text-gray-900">Casual Hoodie in Heather Grey</h3>
+  <div class="flex items-center mt-1">
+  <div class="star-rating flex">
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-fill"></i>
+  <i class="ri-star-line"></i>
+  </div>
+  <span class="text-xs text-gray-500 ml-2">6 reviews</span>
+  </div>
+  <div class="mt-1">
+  <span class="text-sm font-medium text-gray-900">₹1,999</span>
+  <span class="original-price">₹2,499</span>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <button class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="next-btn">
+  <div class="w-8 h-8 flex items-center justify-center">
+  <i class="ri-arrow-right-s-line ri-lg"></i>
+  </div>
+  </button>
+  </div>
+  </div>
+  </div>
+  <!-- Flash Deals section ends here -->
+
+<!-- Added Banner section below the Flash Deal section -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <div class="relative bg-gray-100 rounded overflow-hidden h-64 group cursor-pointer">
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-30"></div>
+      <!-- Background Image -->
+      <img src="./images/banner1.jpg" 
+           alt="Fashion Banner" 
+           class="w-full h-full object-cover object-center">
+      <!-- Text Content -->
+      <div class="absolute inset-0 flex flex-col justify-center pl-16">
+        <div class="text-white">
+          <h2 class="text-4xl font-bold mb-3">LOVE AT FIRST SIGHT</h2>
+          <p class="text-xl mb-6">Spring from one season to the next</p>
+          <a href="#" class="inline-block bg-white text-black px-8 py-3 font-medium hover:bg-black hover:text-white transition-colors">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP SELLERS section  -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">TOP SELLERS</h2>
+    <div class="relative">
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="top-sellers-prev">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <i class="ri-arrow-left-s-line ri-lg"></i>
+        </div>
+      </button>
+      <div class="overflow-hidden relative">
+        <div id="top-sellers-carousel" class="carousel-container flex space-x-4 overflow-x-hidden">
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Premium_Slim-Fit_Blazer.html"><img src="./images/Premium Slim-Fit Blazer.jpg" alt="Premium Blazer" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Premium Slim-Fit Blazer</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">12 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹3,499</span>
+                <span class="original-price">₹4,999</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Designer_Denim_Jeans.html"> <img src="./images/Designer Denim Jeans.jpg" alt="Denim Jeans" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+             
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Designer Denim Jeans</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">8 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹2,199</span>
+                <span class="original-price">₹2,999</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Black_Summer_Dress.html"><img src="./images/Black Summer Dress.jpg" alt="Summer Dress" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Black Summer Dress</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">15 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,499</span>
+                <span class="original-price">₹1,999</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Oxford Cotton_Shirt_in_White.html"><img src="./images/Oxford Cotton Shirt in White.jpg" alt="Cotton Shirt" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Oxford Cotton Shirt in White</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">9 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,299</span>
+                <span class="original-price">₹1,799</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Casual Hoodie_in_Heather_Grey.html"><img src="./images/Casual Hoodie in Heather Grey.jpg" alt="Winter Jacket" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Casual Hoodie in Heather Grey</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">20 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,999</span>
+                <span class="original-price">₹2,499</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Premium Leather_Jacket_in_Brown.html"><img src="./images/Premium Leather Jacket in Brown.jpg" alt="Leather Bag" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Premium Leather Jacket in Brown</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">7 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹5,999</span>
+                <span class="original-price">₹7,499</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Julia_Jean_In_Contrast_Wash.html"><img src="./images/Julia Jean In Contrast Wash.jpg" alt="Party Dress" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Julia Jean In Contrast Wash</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">16 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,499</span>
+                <span class="original-price">₹1,999</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Polo_Neck_Gathered_Dress_In_Midnight.html"> <img src="./images/Polo Neck Gathered Dress In Midnight.jpg" alt="Casual Dress" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">SALE!</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+             
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Polo Neck Gathered Dress In Midnight</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">11 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,999</span>
+                <span class="original-price">₹2,999</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="top-sellers-next">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <i class="ri-arrow-right-s-line ri-lg"></i>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Added 2nd banner after the TOP SELLERS section -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <div class="relative bg-gray-100 rounded overflow-hidden h-64 group cursor-pointer">
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-30"></div>
+      <!-- Background Image - Updated with a more focused streetwear image -->
+      <img src="./images/banner2.jpg" 
+           alt="Streetwear Collection" 
+           class="w-full h-full object-cover object-center">
+      <!-- Text Content -->
+      <div class="absolute inset-0 flex flex-col justify-center pl-16">
+        <div class="text-white">
+          <h2 class="text-4xl font-bold mb-3">STREETWEAR STAPLES</h2>
+          <p class="text-xl mb-6">Chill out in stylish joggers and sweats.</p>
+          <a href="#" class="inline-block bg-white text-black px-8 py-3 font-medium hover:bg-black hover:text-white transition-colors">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING section -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">TRENDING NOW</h2>
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="trending-prev">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <i class="ri-arrow-left-s-line ri-lg"></i>
+        </div>
+      </button>
+      <div class="overflow-hidden relative">
+        <div id="trending-carousel" class="carousel-container flex space-x-4 overflow-x-hidden">
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Premium_Slim-Fit_Blazer.html"><img src="./images/Premium Slim-Fit Blazer.jpg" alt="Trending Blazer" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Premium Slim-Fit Blazer</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">10 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹3,499</span>
+                <span class="original-price">₹4,999</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Women's_Summer_Dress.html"><img src="./images/Women's Summer Dress.jpg" alt="Women's Dress" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Women's Summer Dress</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">9 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,799</span>
+                <span class="original-price">₹2,299</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Kids_Cozy_Hoodie.html"><img src="./images/Kids Cozy Hoodie.jpg" alt="Kids Hoodie" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Kids Cozy Hoodie</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">5 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,299</span>
+                <span class="original-price">₹1,799</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Women's_Leather_Handbag.html"> <img src="./images/Women's Leather Handbag.jpg" alt="Women's Handbag" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+             
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Women's Leather Handbag</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">8 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹2,499</span>
+                <span class="original-price">₹3,499</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Kids_Running_Shoes.html"><img src="./images/Kids Running Shoes.jpg" alt="Kids Shoes" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div>  </a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Kids Running Shoes</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">6 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹1,499</span>
+                <span class="original-price">₹1,999</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Men's_Winter_Jacket.html"><img src="./images/Men's Winter Jacket.jpg" alt="Men's Jacket" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Men's Winter Jacket</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">15 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹3,499</span>
+                <span class="original-price">₹4,999</span>
+              </div>
+            </div>
+          </div>  
+          <div class="product-card flex-none w-64">
+            <div class="relative rounded overflow-hidden">
+              <a href="Men's_Casual_Sneakers.html"><img src="./images/Men's Casual Sneakers.jpg" alt="Men's Sneakers" class="w-full h-64 object-cover object-top">
+                <div class="sale-badge">TRENDING</div>
+                <div class="select-options">SELECT OPTIONS</div></a>
+              
+            </div>
+            <div class="mt-3">
+              <h3 class="text-sm font-medium text-gray-900">Men's Casual Sneakers</h3>
+              <div class="flex items-center mt-1">
+                <div class="star-rating flex">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                </div>
+                <span class="text-xs text-gray-500 ml-2">12 reviews</span>
+              </div>
+              <div class="mt-1">
+                <span class="text-sm font-medium text-gray-900">₹2,499</span>
+                <span class="original-price">₹3,499</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Arrow -->
+      <button class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full shadow-lg p-2 focus:outline-none" id="trending-next">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <i class="ri-arrow-right-s-line ri-lg"></i>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Banner Section -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Banner 1: New Arrivals -->
+      <div class="relative overflow-hidden rounded group cursor-pointer transform transition-transform duration-300 hover:scale-[1.02]">
+        <a href="SummerCollection.html">
+        <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-30"></div>
+        <img src="./images/SUMMER COLLECTION.jpg" 
+             alt="New Arrivals" 
+             class="w-full h-[400px] object-cover object-center">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+          <div class="text-white">
+            <h3 class="text-2xl font-bold mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">SUMMER COLLECTION</h3>
+            <p class="text-lg mb-4 transform transition-transform duration-300 group-hover:-translate-y-2">New Season, New Style</p>
+            <a href="SummerCollection.html" class="inline-block bg-white text-black px-8 py-3 font-medium 
+                            hover:bg-black hover:text-white transition-colors">
+              SHOP NOW
+            </a>
+          </div>
+        </div>
+      </a>
+      </div>
+
+      <!-- Banner 2: Accessories -->
+      <div class="relative overflow-hidden rounded group cursor-pointer transform transition-transform duration-300 hover:scale-[1.02]">
+        <a href="Accessories.html">
+        <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-30"></div>
+        <img src="./images/Accessories.jpg" 
+             alt="Accessories" 
+             class="w-full h-[400px] object-cover object-center">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+          <div class="text-white">
+            <h3 class="text-2xl font-bold mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">LUXURY ACCESSORIES</h3>
+            <p class="text-lg mb-4 transform transition-transform duration-300 group-hover:-translate-y-2">Complete Your Look</p>
+            <a href="Accessories.html" class="inline-block bg-white text-black px-8 py-3 font-medium 
+                            hover:bg-black hover:text-white transition-colors">
+              SHOP NOW
+            </a>
+          </div>
+        </div>
+      </a>
+      </div>
+      
+      <!-- Banner 3: Statement piece -->
+      <div class="relative overflow-hidden rounded group cursor-pointer transform transition-transform duration-300 hover:scale-[1.02]">
+        <div class="absolute inset-0 bg-black bg-opacity-40 transition-opacity group-hover:bg-opacity-30"></div>
+        <img src="./images/Statement piece.jpg" 
+             alt="Accessories" 
+             class="w-full h-[400px] object-cover object-center">
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+          <div class="text-white">
+            <h3 class="text-2xl font-bold mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">STATEMENT PIECES</h3>
+            <p class="text-lg mb-4 transform transition-transform duration-300 group-hover:-translate-y-2">Elevate Your Style</p>
+            <a href="#" class="inline-block bg-white text-black px-8 py-3 font-medium 
+                            hover:bg-black hover:text-white transition-colors">
+              SHOP NOW
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop by Categories section -->
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <h2 class="text-2xl font-bold text-center tracking-tight text-gray-900 mb-6">SHOP BY CATEGORIES</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+      
+      <!-- Men Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/Men Category.jpg"  
+             alt="Men's Category" 
+             class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">MEN</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Women Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/Women Category.jpg" 
+             alt="Women's Category" 
+             class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">WOMEN</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Accessories Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/Accessories Category.jpg"  
+        alt="Accessories Category" 
+        class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">ACCESSORIES</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Kids Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/kids-clothing-2.png" 
+             alt="Kids Category" 
+             class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">KIDS</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Gifts for Him Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/gifts-for-him.png" 
+             alt="Gifts for Him" 
+             class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">GIFTS FOR HIM</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gifts for Her Category -->
+      <div class="relative overflow-hidden rounded group cursor-pointer">
+        <div class="absolute inset-0 bg-black bg-opacity-20 transition-opacity group-hover:bg-opacity-10"></div>
+        <img src="./images/gifts-for-her.jpeg"
+             alt="Gifts for Her" 
+             class="w-full h-[200px] object-cover">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-white mb-2">GIFTS FOR HER</h3>
+            <a href="#" class="inline-block text-sm text-white hover:underline">Shop Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+
+
+<script>
+  // TRENDING NOW carousel functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const trendingCarousel = document.getElementById('trending-carousel');
+    const prevBtnTrending = document.getElementById('trending-prev');
+    const nextBtnTrending = document.getElementById('trending-next');
+    const scrollAmount = 270; // Width of product card + gap
+
+    prevBtnTrending.addEventListener('click', function() {
+      trendingCarousel.scrollLeft -= scrollAmount;
+    });
+
+    nextBtnTrending.addEventListener('click', function() {
+      trendingCarousel.scrollLeft += scrollAmount;
+    });
+  });
+</script>
+
+  <script>
+    //banner slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.banner-slide');
+    const totalSlides = slides.length;
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+    let autoSlideInterval = setInterval(nextSlide, 5000);
+    document.querySelector('.banner-slides').addEventListener('mouseover', () => {
+      clearInterval(autoSlideInterval);
+    });
+    document.querySelector('.banner-slides').addEventListener('mouseout', () => {
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    });
+
+    // Flash Sale section functionality
+    document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.getElementById('carousel-container');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const genderButtons = document.querySelectorAll('.gender-button');
+  const womenProducts = document.querySelector('.women-products');
+  const menProducts = document.querySelector('.men-products');
+  // Scroll amount for each click
+  const scrollAmount = 270; // Width of product card + gap
+  // Carousel navigation
+  prevBtn.addEventListener('click', function() {
+  carousel.scrollLeft -= scrollAmount;
+  });
+  nextBtn.addEventListener('click', function() {
+  carousel.scrollLeft += scrollAmount;
+  });
+  // Gender toggle functionality
+  genderButtons.forEach(button => {
+  button.addEventListener('click', function() {
+  // Remove active class from all buttons
+  genderButtons.forEach(btn => btn.classList.remove('active'));
+  // Add active class to clicked button
+  this.classList.add('active');
+  // Show/hide products based on gender
+  const gender = this.getAttribute('data-gender');
+  if (gender === 'women') {
+  womenProducts.classList.remove('hidden');
+  menProducts.classList.add('hidden');
+  } else {
+  womenProducts.classList.add('hidden');
+  menProducts.classList.remove('hidden');
+  }
+  // Reset scroll position
+  carousel.scrollLeft = 0;
+  });
+  });
+  });
+
+  // Top Sellers carousel functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const topSellersCarousel = document.getElementById('top-sellers-carousel');
+    const prevBtnTopSellers = document.getElementById('top-sellers-prev');
+    const nextBtnTopSellers = document.getElementById('top-sellers-next');
+    const scrollAmount = 270; // Width of product card + gap
+
+    prevBtnTopSellers.addEventListener('click', function() {
+      topSellersCarousel.scrollLeft -= scrollAmount;
+    });
+
+    nextBtnTopSellers.addEventListener('click', function() {
+      topSellersCarousel.scrollLeft += scrollAmount;
+    });
+  });
+  </script>
+
+<!-- Footer Section -->
+<footer class="bg-gray-50 py-12">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <!-- Top Section: Features -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div class="flex items-center space-x-4">
+        <i class="ri-truck-line text-3xl text-gray-700"></i>
+        <div>
+          <h3 class="font-semibold text-gray-900">FAST & FREE DELIVERY</h3>
+          <p class="text-sm text-gray-600">On all orders over 999</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <i class="ri-store-line text-3xl text-gray-700"></i>
+        <div>
+          <h3 class="font-semibold text-gray-900">RETURNS AND EXCHANGES</h3>
+          <p class="text-sm text-gray-600">15 days to return your product</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <i class="ri-shield-check-line text-3xl text-gray-700"></i>
+        <div>
+          <h3 class="font-semibold text-gray-900">SECURE PAYMENT</h3>
+          <p class="text-sm text-gray-600">100% secure payments</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <i class="ri-customer-service-2-line text-3xl text-gray-700"></i>
+        <div>
+          <h3 class="font-semibold text-gray-900">24/7 SUPPORT</h3>
+          <p class="text-sm text-gray-600">Dedicated support in 24h</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <br>
+
+    <!-- Middle Section: Newsletter -->
+    <div class="text-center mb-12">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">SIGN UP TO OUR NEWSLETTER</h3>
+      <p class="text-sm text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+      <form class="flex justify-center items-center max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email address" class="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-primary">
+        <button type="submit" class="bg-black text-white px-4 py-2 hover:bg-gray-800">
+          <i class="ri-mail-send-line"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Bottom Section: Links and Contact -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-gray-600">
+      <!-- Contact Info -->
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">LIFE STYLE</h3>
+        <p>Line Baazar, <br>Allahabad, U.P </p>
+        <p class="mt-2">(+91) 6306407861<br>info@liestyle.com</p>
+      </div>
+
+      <!-- Shop Links -->
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">SHOP</h3>
+        <ul>
+          <li><a href="#" class="hover:underline">Women</a></li>
+          <li><a href="#" class="hover:underline">Men</a></li>
+          <li><a href="#" class="hover:underline">Kids</a></li>
+          <li><a href="#" class="hover:underline">Sale</a></li>
+        </ul>
+      </div>
+
+      <!-- About Us Links -->
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">ABOUT US</h3>
+        <ul>
+          <li><a href="#" class="hover:underline">About</a></li>
+          <li><a href="#" class="hover:underline">Press</a></li>
+          <li><a href="#" class="hover:underline">Stores</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service Links -->
+      <div>
+        <h3 class="font-bold text-gray-900 mb-4">CUSTOMER SERVICE</h3>
+        <ul>
+          <li><a href="#" class="hover:underline">Track Order</a></li>
+          <li><a href="#" class="hover:underline">Return & Cancellations</a></li>
+          <li><a href="#" class="hover:underline">FAQ</a></li>
+          <li><a href="#" class="hover:underline">Manage Account</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="flex flex-col md:flex-row justify-between items-center mt-12 text-sm text-gray-600">
+      <p>© 2025 LifeStyle. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="hover:underline">Privacy Policy</a>
+        <a href="#" class="hover:underline">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
